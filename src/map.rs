@@ -1,5 +1,4 @@
 
 struct Map
 {
-    
 }
