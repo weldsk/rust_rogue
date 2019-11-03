@@ -1,13 +1,13 @@
 extern crate ncurses;
 use ncurses::*;
 
-pub struct Pos
+struct Position
 {
     x: i32,
     y: i32,
 }
 
-pub struct ColorChar
+struct ColorChar
 {
     character: char,
     color: i16,
@@ -31,9 +31,9 @@ impl Screen
         curs_set(CURSOR_VISIBILITY::CURSOR_INVISIBLE);
     }
 
-    pub fn get_size() -> Pos
+    fn get_size() -> Position
     {
-        Pos
+        Position
         {
             x: getmaxx(stdscr()),
             y: getmaxy(stdscr()),
