@@ -1,32 +1,89 @@
+/** 方向 */
 pub enum Direction
 {
+    /// 上
     Up,
+    /// 下
     Down,
-    Right,
+    /// 左
     Left,
+    /// 右
+    Right,
+    /// 左上
     UpperLeft,
+    /// 右上
     UpperRight,
+    /// 左下
     LowerLeft,
+    /// 右下
     LowerRight,
 }
 
 impl Direction
 {
-    fn AllDirection() -> Vec<Direction>
+    /// 全て
+    pub fn all() -> Vec<Direction>
     {
-        vec![Direction::Up,Direction::Down,Direction::Right,Direction::Left,Direction::UpperLeft,Direction::UpperRight,Direction::LowerLeft,Direction::LowerRight]
+        vec![
+            Direction::Up,
+            Direction::Down,
+            Direction::Left,
+            Direction::Right,
+            Direction::UpperLeft,
+            Direction::UpperRight,
+            Direction::LowerLeft,
+            Direction::LowerRight
+            ]
+    }
+
+    /// 無し
+    pub fn none() -> Vec<Direction>
+    {
+        Vec::new() as Vec<Direction>
     }
 }
 
-pub struct TerrainType
+pub fn in_event_default(current_tile:Tile, next_tile:Tile, to_dir: Direction)
 {
-    allow_from_dir: Vec<Direction>,
-    allow_to_dir: Vec<Direction>,
 }
 
+pub fn on_event_default(current_tile:Tile)
+{
+    &current_tile;
+}
+
+pub fn out_event_default(current_tile:Tile, next_tile:Tile, to_dir: Direction)
+{
+
+}
+
+/// 地形(allowの項目に一つでも合致していれば侵入可能)
 pub struct Terrain
 {
-    terrain_type: TerrainType,
+    /// 侵入可能方向 
+    allow_from_dir: Vec<Direction>,
+    /// 侵入イベント(侵入前に実行される)
+    /// 1st_arg:現在のタイル, 2nd_arg:移動先のタイル, 3rd_arg:移動先方向
+    in_envet: fn(Tile, Tile, Direction),
+    /// 待機時(侵入後動かなかった場合)イベント
+    /// arg:現在のタイル
+    keep_event: fn(Tile),
+    /// 侵出イベント(侵出前に実行される)
+    /// 1st_arg:現在のタイル, 2nd_arg:移動先のタイル, 3rd_arg:移動先方向
+    out_event: fn(Tile, Tile),
 }
 
-pub struct Map (Vec<Vec::<Terrain>>);
+/// タイル(1マス)
+pub struct Tile
+{
+    terrain: Terrain,
+}
+
+/// マップ
+pub struct Map (Vec<Vec::<Tile>>);
+
+#[test]
+fn test()
+{
+    Direction::all();
+}
