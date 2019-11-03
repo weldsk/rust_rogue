@@ -10,6 +10,13 @@ pub enum Direction
     LowerRight,
 }
 
+impl Direction
+{
+    fn AllDirection() -> Vec<Direction>
+    {
+        vec![Direction::Up,Direction::Down,Direction::Right,Direction::Left,Direction::UpperLeft,Direction::UpperRight,Direction::LowerLeft,Direction::LowerRight]
+    }
+}
 
 pub struct TerrainType
 {
