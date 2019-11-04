@@ -13,7 +13,7 @@ pub struct Map (Vec<Vec::<Tile>>);
 impl Map
 {
     /// コンストラクタ
-    pub fn new() -> Self
+    pub fn new(x_size: usize, y_size: usize) -> Self
     {
         Self(Vec::new())
     }
