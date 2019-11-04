@@ -12,6 +12,7 @@ pub struct Map (Vec<Vec::<Tile>>);
 
 impl Map
 {
+    #[allow(unused_variables)]
     /// コンストラクタ
     pub fn new(x_size: usize, y_size: usize) -> Self
     {
