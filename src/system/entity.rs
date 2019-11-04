@@ -1,4 +1,4 @@
-use crate::game::*;
+use super::common::*;
 
 pub struct Entity
 {

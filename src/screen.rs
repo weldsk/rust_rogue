@@ -1,4 +1,3 @@
-extern crate ncurses;
 use ncurses::*;
 
 struct Position

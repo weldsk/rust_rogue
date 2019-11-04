@@ -1,5 +1,5 @@
-use crate::*;
-use crate::game::*;
+use super::*;
+use super::common::*;
 
 /// タイル(1マス)
 pub struct Tile
