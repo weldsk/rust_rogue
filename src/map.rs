@@ -15,7 +15,7 @@ impl Map
     /// コンストラクタ
     pub fn new() -> Self
     {
-        Map(Vec::new())
+        Self(Vec::new())
     }
 
     /// タイルゲッタ
