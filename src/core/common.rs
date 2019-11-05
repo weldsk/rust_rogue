@@ -1,7 +1,6 @@
 /** 方向(複数) */
 #[derive(PartialEq)]
-pub enum Directions
-{
+pub enum Directions {
     /// 無し
     None,
     /// 全て
@@ -9,14 +8,10 @@ pub enum Directions
     /// 精密な複数方向
     StrictDirections(StrictDirections)
 }
-impl Directions
-{
-    pub fn has_direction(&self, direction: &Direction) -> bool
-    {
-        if let Self::StrictDirections(strict_dir) = self
-        {
-            match direction
-            {
+impl Directions {
+    pub fn has_direction(&self, direction: &Direction) -> bool {
+        if let Self::StrictDirections(strict_dir) = self {
+            match direction {
                 Direction::Up           => return strict_dir.up,
                 Direction::Down         => return strict_dir.down,
                 Direction::Left         => return strict_dir.left,
@@ -28,19 +23,15 @@ impl Directions
                 Direction::Jump         => return strict_dir.jump,
             };
         }
-        if Self::All == *self
-        {
+        if Self::All == *self {
             return true;
         }
         return false;
     }
 }
-impl Default for StrictDirections
-{
-    fn default() -> Self
-    {
-        Self
-        {
+impl Default for StrictDirections {
+    fn default() -> Self {
+        Self {
             up: false,
             down: false, 
             left: false, 
@@ -55,8 +46,7 @@ impl Default for StrictDirections
 }
 /** 精密な複数方向 */
 #[derive(PartialEq)]
-pub struct StrictDirections
-{
+pub struct StrictDirections {
     /// 上
     pub up: bool,
     /// 下
@@ -76,13 +66,10 @@ pub struct StrictDirections
     /// 瞬間移動(方向性を持たない)
     pub jump: bool,
 }
-impl StrictDirections
-{
+impl StrictDirections {
     /// ホワイトリスト
-    pub fn white_list() -> Self
-    {
-        Self
-        {
+    pub fn white_list() -> Self {
+        Self {
             up: false,
             down: false, 
             left: false, 
@@ -95,10 +82,8 @@ impl StrictDirections
         }
     }
     /// ブラックリスト
-    pub fn black_list() -> Self
-    {
-        Self
-        {
+    pub fn black_list() -> Self {
+        Self {
             up: true,
             down: true, 
             left: true, 
@@ -113,8 +98,7 @@ impl StrictDirections
 }
 /** 方向 */
 #[derive(PartialEq)]
-pub enum Direction
-{
+pub enum Direction {
     /// 上
     Up,
     /// 下
@@ -134,13 +118,10 @@ pub enum Direction
     /// 瞬間移動(方向性を持たない)
     Jump,
 }
-impl Direction
-{
+impl Direction {
     /// 反転
-    pub fn invert(&self) -> Self
-    {
-        match self
-        {
+    pub fn invert(&self) -> Self {
+        match self {
             Direction::Up           => Direction::Down,
             Direction::Down         => Direction::Up,
             Direction::Left         => Direction::Right,
@@ -155,8 +136,7 @@ impl Direction
 }
 
 #[derive(PartialEq,Copy,Clone)]
-pub struct Position
-{
+pub struct Position {
     pub x: u32,
     pub y: u32,
 }

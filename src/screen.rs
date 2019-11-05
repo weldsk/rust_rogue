@@ -1,23 +1,19 @@
 use ncurses::*;
 
-struct Position
-{
+struct Position {
     x: i32,
     y: i32,
 }
 
-struct ColorChar
-{
+struct ColorChar {
     character: char,
     color: i16,
 }
 
 pub struct Screen (Vec<Vec<ColorChar>>);
 
-impl Screen
-{
-    pub fn new()
-    {
+impl Screen {
+    pub fn new() {
         /* 初期化 */
         initscr();
         raw();
@@ -30,10 +26,8 @@ impl Screen
         curs_set(CURSOR_VISIBILITY::CURSOR_INVISIBLE);
     }
 
-    fn get_size() -> Position
-    {
-        Position
-        {
+    fn get_size() -> Position {
+        Position {
             x: getmaxx(stdscr()),
             y: getmaxy(stdscr()),
         }
@@ -41,10 +35,8 @@ impl Screen
 }
 
 // デストラクタ
-impl Drop for Screen
-{
-    fn drop(&mut self)
-    {
+impl Drop for Screen {
+    fn drop(&mut self) {
         ncurses::endwin();
     }
 }

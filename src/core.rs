@@ -14,13 +14,11 @@ lazy_static! {
     pub static ref SYSTEM: Arc<Mutex<Core>> = Arc::new(Mutex::new(Core::new()));
 }
 
-pub struct Core
-{
+pub struct Core {
     pub terrain_db: database::Database<terrain::Terrain>,
 }
 
-impl Core
-{
+impl Core {
     pub fn new() -> Self
     {
         Core

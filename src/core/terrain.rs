@@ -2,10 +2,8 @@ use super::*;
 use super::common::*;
 
 #[allow(unused_variables)]
-fn is_allowed_get_in(entity: &entity::Entity, current_tile: &map::Tile, next_tile: &map::Tile, from_dir: &Direction) -> bool
-{
-    if next_tile.terrain.allow_from_dir.has_direction(&from_dir)
-    {
+fn is_allowed_get_in(entity: &entity::Entity, current_tile: &map::Tile, next_tile: &map::Tile, from_dir: &Direction) -> bool {
+    if next_tile.terrain.allow_from_dir.has_direction(&from_dir) {
         return true;
     }
 
@@ -13,29 +11,24 @@ fn is_allowed_get_in(entity: &entity::Entity, current_tile: &map::Tile, next_til
 }
 
 #[allow(unused_variables)]
-fn is_allowed_get_out(entity: &entity::Entity, current_tile: &map::Tile, next_tile: &map::Tile, to_dir: &Direction) -> bool
-{
+fn is_allowed_get_out(entity: &entity::Entity, current_tile: &map::Tile, next_tile: &map::Tile, to_dir: &Direction) -> bool {
     return true;
 }
 
 #[allow(unused_variables)]
-fn get_in(entity: &mut entity::Entity, current_tile: &mut map::Tile, next_tile: &mut map::Tile, from_dir: &Direction)
-{
+fn get_in(entity: &mut entity::Entity, current_tile: &mut map::Tile, next_tile: &mut map::Tile, from_dir: &Direction) {
 }
 
 #[allow(unused_variables)]
-fn keep(entity: &mut entity::Entity, current_tile: &mut map::Tile)
-{
+fn keep(entity: &mut entity::Entity, current_tile: &mut map::Tile) {
 }
 
 #[allow(unused_variables)]
-fn get_out(entity: &mut entity::Entity, current_tile: &mut map::Tile, next_tile: &mut map::Tile, to_dir: &Direction)
-{
+fn get_out(entity: &mut entity::Entity, current_tile: &mut map::Tile, next_tile: &mut map::Tile, to_dir: &Direction) {
 }
 
 /// 地形(allowの項目に一つでも合致していれば侵入可能)
-pub struct Terrain
-{
+pub struct Terrain {
     /// 侵入可能方向 
     allow_from_dir: Directions,
     /// 侵入可能判定関数
@@ -56,10 +49,8 @@ pub struct Terrain
     /// (1st_arg: 移動するエンティティ, 2st_arg:現在のタイル, 3nd_arg:移動先のタイル, 4rd_arg:侵出方向)
     get_out: fn(&mut entity::Entity, &mut map::Tile, &mut map::Tile, &Direction),
 }
-impl Default for Terrain
-{
-    fn default() -> Self
-    {
+impl Default for Terrain {
+    fn default() -> Self {
         Self {
             allow_from_dir: Directions::All,
             is_able_to_get_in: is_allowed_get_in,
