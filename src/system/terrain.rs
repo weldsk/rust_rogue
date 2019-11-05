@@ -1,10 +1,10 @@
 use super::*;
-use super::common::*;
+use super::common::direction::*;
 
 #[allow(unused_variables)]
 fn is_allowed_get_in(entity: &entity::Entity, current_tile: &map::Tile, next_tile: &map::Tile, from_dir: &Direction) -> bool
 {
-    if next_tile.terrain.allow_from_dir.contains(&from_dir)
+    if next_tile.terrain.allow_from_dir.has_direction(&from_dir)
     {
         return true;
     }
@@ -37,7 +37,7 @@ fn get_out(entity: &mut entity::Entity, current_tile: &mut map::Tile, next_tile:
 pub struct Terrain
 {
     /// 侵入可能方向 
-    allow_from_dir: Vec<Direction>,
+    allow_from_dir: Directions,
     /// 侵入可能判定関数
     /// (1st_arg: 移動するエンティティ, 2st_arg:現在のタイル, 3nd_arg:移動先のタイル, 4rd_arg:侵入方向)
     /// -> bool: 侵入可能
@@ -61,7 +61,7 @@ impl Default for Terrain
     fn default() -> Self
     {
         Self {
-            allow_from_dir: Direction::all(),
+            allow_from_dir: Directions::All,
             is_able_to_get_in: is_allowed_get_in,
             is_able_to_get_out: is_allowed_get_out,
             get_in: get_in,
