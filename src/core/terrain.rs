@@ -1,5 +1,5 @@
 use super::*;
-use super::common::direction::*;
+use super::common::*;
 
 #[allow(unused_variables)]
 fn is_allowed_get_in(entity: &entity::Entity, current_tile: &map::Tile, next_tile: &map::Tile, from_dir: &Direction) -> bool
