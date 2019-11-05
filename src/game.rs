@@ -1,8 +1,8 @@
-use crate::system::*;
+use crate::core::*;
 
 pub fn game()
 {
-    let system = SYSTEM.clone();
-    let mut system_mut = system.lock().unwrap();
-    system_mut.terrain_db.insert("Default", terrain::Terrain::default());
+    let core = SYSTEM.clone();
+    let mut core_mut = core.lock().unwrap();
+    core_mut.terrain_db.insert("Default", terrain::Terrain::default());
 }

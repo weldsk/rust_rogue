@@ -10,20 +10,20 @@ use std::sync::Mutex;
 use lazy_static::lazy_static;
 
 lazy_static! {
-//static mut SYSTEM: &'static Option<Rc<System>> = &None;
-    pub static ref SYSTEM: Arc<Mutex<System>> = Arc::new(Mutex::new(System::new()));
+//static mut SYSTEM: &'static Option<Rc<Core>> = &None;
+    pub static ref SYSTEM: Arc<Mutex<Core>> = Arc::new(Mutex::new(Core::new()));
 }
 
-pub struct System
+pub struct Core
 {
     pub terrain_db: database::Database<terrain::Terrain>,
 }
 
-impl System
+impl Core
 {
     pub fn new() -> Self
     {
-        System
+        Core
         {
             terrain_db: Database::new(),
         }
