@@ -1,27 +1,21 @@
+use super::*;
 use std::collections::HashMap;
+use std::sync::{Arc, RwLock};
+use lazy_static::lazy_static;
 
-pub struct Database<T> {
-    database: HashMap<String, T>
+/// データベース型
+pub struct Database {
+    pub terrain: Arc<RwLock<HashMap<String, terrain::Terrain>>>,
 }
 
-impl<T> Database<T> {
-    pub fn new() -> Self {
-        Self {
-            database: HashMap::new(),
-        }
-    }
+lazy_static! {
+    pub static ref DATABASE: Database = Database::new();
+}
 
-    /// DBにデータを追加する(id_name: 識別名, data: データ型)
-    pub fn insert(&mut self, id_name: &'static str, data: T) -> bool {
-        // すでに存在していない場合，追加
-        if self.database.get(id_name).is_none() {
-            self.database.insert(id_name.to_string(), data);
-            return true;
+impl Database {
+    fn new() -> Self {
+        Self {
+            terrain: Arc::new(RwLock::new(HashMap::new())),
         }
-        return false;
-    }
-    
-    pub fn get(&self, id_name: &'static str) -> Option<&T> {
-        self.database.get(id_name)
     }
 }
