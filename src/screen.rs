@@ -7,7 +7,8 @@ struct Position {
 
 struct ColorChar {
     character: char,
-    color: i16,
+    fg_color: u8,
+    bg_color: u8,
 }
 
 pub struct Screen (Vec<Vec<ColorChar>>);
