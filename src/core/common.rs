@@ -9,7 +9,7 @@ pub enum Directions {
     StrictDirections(StrictDirections)
 }
 impl Directions {
-    pub fn has_direction(&self, direction: &Direction) -> bool {
+    pub fn has_direction(&self, direction: Direction) -> bool {
         if let Self::StrictDirections(strict_dir) = self {
             match direction {
                 Direction::Up           => return strict_dir.up,
@@ -97,7 +97,7 @@ impl StrictDirections {
     }
 }
 /** 方向 */
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone, Copy)]
 pub enum Direction {
     /// 上
     Up,
