@@ -10,6 +10,7 @@ pub enum Directions {
 }
 impl Directions {
     pub fn has_direction(&self, direction: Direction) -> bool {
+        // 精密方向
         if let Self::StrictDirections(strict_dir) = self {
             match direction {
                 Direction::Up           => return strict_dir.up,
@@ -23,9 +24,11 @@ impl Directions {
                 Direction::Jump         => return strict_dir.jump,
             };
         }
+        // 全て
         if Self::All == *self {
             return true;
         }
+        // 無し
         return false;
     }
 }
@@ -67,7 +70,7 @@ pub struct StrictDirections {
     pub jump: bool,
 }
 impl StrictDirections {
-    /// ホワイトリスト
+    /// ホワイトリスト(有効化したい方向をtrueにする)
     pub fn white_list() -> Self {
         Self {
             up: false,
@@ -81,7 +84,7 @@ impl StrictDirections {
             jump: false,
         }
     }
-    /// ブラックリスト
+    /// ブラックリスト(無効化したい方向をfalseにする)
     pub fn black_list() -> Self {
         Self {
             up: true,
