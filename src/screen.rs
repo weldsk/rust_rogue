@@ -1,6 +1,6 @@
 use ncurses::*;
 
-struct Position {
+struct Cursor{
     x: i32,
     y: i32,
 }
@@ -27,8 +27,8 @@ impl Screen {
         curs_set(CURSOR_VISIBILITY::CURSOR_INVISIBLE);
     }
 
-    fn get_size() -> Position {
-        Position {
+    fn get_size() -> Cursor{
+        Cursor{
             x: getmaxx(stdscr()),
             y: getmaxy(stdscr()),
         }
