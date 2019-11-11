@@ -6,7 +6,8 @@ use super::map::Map;
 
 #[allow(unused_variables)]
 fn is_allowed_get_in(db: &Database, entity: &Entity, map: &Map,
-                     current_pos: Position, next_pos: Position, from_dir: Direction) -> bool {
+                     current_pos: Position, next_pos: Position, from_dir: Direction)
+                     -> bool {
     let next_terrain = &db.terrain[map.tile(next_pos).terrain_id];
     if next_terrain.allow_from_dir.has_direction(from_dir) {
         return true;
@@ -17,7 +18,8 @@ fn is_allowed_get_in(db: &Database, entity: &Entity, map: &Map,
 
 #[allow(unused_variables)]
 fn is_allowed_get_out(db: &Database, entity: &Entity, map: &Map,
-                      current_pos: Position, next_pos: Position, to_dir: Direction) -> bool {
+                      current_pos: Position, next_pos: Position, to_dir: Direction)
+                      -> bool {
     return true;
 }
 
