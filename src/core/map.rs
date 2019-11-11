@@ -3,7 +3,14 @@ use super::common::*;
 
 /// タイル(1マス)
 pub struct Tile {
-    pub terrain: terrain::Terrain,
+    pub terrain_id: &'static str,
+}
+impl Default for Tile {
+    fn default() -> Self {
+        Self {
+            terrain_id: "None",
+        }
+    }
 }
 
 /// マップ
@@ -18,10 +25,19 @@ impl Map {
     #[allow(unused_variables)]
     /// コンストラクタ
     pub fn new(x_size: usize, y_size: usize) -> Self {
-        Self{
+        let mut map = Self {
             tiles: Vec::new(),
             start_pos: Position{x:0, y:0}
-        }
+        };
+        for i in 0..y_size {
+            // 行追加
+            map.tiles.push(Vec::new());
+            for j in 0.. x_size {
+                // 列追加
+                map.tiles[i].push(Default::default());
+            }
+        };
+        return map;
     }
 
     /// タイル(imutable)
