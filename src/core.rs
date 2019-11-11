@@ -6,3 +6,5 @@ pub mod database;
 pub mod engine;
 pub mod terrain;
 pub mod item;
+pub mod weapon;
+pub mod armor;

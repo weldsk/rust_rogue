@@ -1,4 +1,4 @@
-pub struct Item
+pub struct Armor
 {
     name: &'static str,
 }

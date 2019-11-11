@@ -3,9 +3,9 @@ use std::collections::HashMap;
 
 /// データベース型
 pub struct Database {
-    pub terrain :HashMap<String, terrain::Terrain>,
-    pub item    :HashMap<String, item::Item>,
-    pub entity  :HashMap<String, entity::Entity>,
+    pub terrain :HashMap<&'static str, terrain::Terrain>,
+    pub item    :HashMap<&'static str, item::Item>,
+    pub entity  :HashMap<&'static str, entity::Entity>,
 }
 
 impl Database {
