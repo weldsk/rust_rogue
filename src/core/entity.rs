@@ -1,10 +1,11 @@
 use super::common::*;
 
-/** エンティティ(プレイヤー,Mob) */
-pub struct Entity {
-    pub name: &'static str,
-    pub hp: i32,
-    pub attack: i32,
-    pub defence: i32,
-    pub speed: i32,
+/// Entity (Player,Mob)
+pub trait Entity
+{
+    fn name(&self) -> &'static str;
+    fn hp(&self) -> i32;
+    fn attack(&self) -> i32;
+    fn defence(&self) -> i32;
+    fn is_player(&self) -> bool;
 }

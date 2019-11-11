@@ -5,7 +5,7 @@ use std::collections::HashMap;
 pub struct Database {
     pub terrain :HashMap<&'static str, terrain::Terrain>,
     pub item    :HashMap<&'static str, item::Item>,
-    pub entity  :HashMap<&'static str, entity::Entity>,
+    pub entity  :HashMap<&'static str, mob::Mob>,
 }
 
 impl Database {
