@@ -2,25 +2,22 @@ use super::*;
 use super::entity::*;
 /// Mob
 pub struct Mob {
-    pub name: &'static str,
-    pub hp: i32,
-    pub attack: i32,
-    pub defence: i32,
-    pub speed: i32,
+    name: &'static str,
+    hp: i32,
+    attack: i32,
+    defence: i32,
+    speed: i32,
 }
 
 impl Entity for Mob {
-    fn name(&self) -> &'static str {
+    fn get_name(&self) -> &'static str {
         self.name
     }
-    fn hp(&self) -> i32 {
+    fn get_hp(&self) -> i32 {
         self.hp
     }
-    fn attack(&self) -> i32 {
+    fn attack(&mut self, entity: &mut impl Entity) -> i32 {
         self.attack
-    }
-    fn defence(&self) -> i32 {
-        self.defence
     }
     fn is_player(&self) -> bool{
         false
