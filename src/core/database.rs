@@ -3,7 +3,7 @@ use std::collections::HashMap;
 
 /// データベース型
 pub struct Database {
-    pub terrain :HashMap<&'static str, terrain::Terrain>,
+    pub terrain :HashMap<&'static str, Box<dyn terrain::Terrain>>,
     pub item    :HashMap<&'static str, item::Item>,
     pub entity  :HashMap<&'static str, mob::Mob>,
 }
