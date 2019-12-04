@@ -3,13 +3,21 @@ use super::common::*;
 
 /// タイル(1マス)
 pub struct Tile {
-    pub terrain_id: &'static str,
+    terrain: Box<dyn terrain::Terrain>,
 }
 impl Default for Tile {
     fn default() -> Self {
         Self {
-            terrain_id: "None",
+            terrain: Box::new(terrain::DefaultTerrain()),
         }
+    }
+}
+impl Tile {
+    pub fn terrain(&self) -> &dyn terrain::Terrain {
+        &*(self.terrain)
+    }
+    pub fn terrain_mut(&mut self) -> &mut dyn terrain::Terrain {
+        &mut *(self.terrain)
     }
 }
 
