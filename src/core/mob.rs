@@ -16,9 +16,6 @@ impl Entity for Mob {
     fn get_hp(&self) -> i32 {
         self.hp
     }
-    fn attack(&mut self, entity: &mut impl Entity) -> i32 {
-        self.attack
-    }
     fn is_player(&self) -> bool{
         false
     }
