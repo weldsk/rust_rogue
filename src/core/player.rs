@@ -1,4 +1,6 @@
 use super::*;
+use super::common::*;
+use super::entity::*;
 
 /// Player
 pub struct Player {
@@ -20,6 +22,23 @@ pub struct Player {
     armors: Vec<armor::Armor>,
     /// 所持アイテム
     items: Vec<item::Item>,
+    /// 現在位置
+    position: Position,
+}
+
+impl Entity for Player {
+    fn name(&self) -> &'static str {
+        self.name
+    }
+    fn hp(&self) -> i32 {
+        self.hp
+    }
+    fn is_player(&self) -> bool {
+        true
+    }
+    fn walk(&self, core: Core, dir: Direction) -> bool {
+        core.map.tile(self.position).terrain().is_able_to_get_out();
+    }
 }
 
 impl Default for Player {

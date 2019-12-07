@@ -11,11 +11,10 @@ pub mod item;
 pub mod weapon;
 pub mod armor;
 
-pub struct Core<E: entity::Entity> {
-    database: database::Database,
-    map: map::Map,
-    player: player::Player,
-    mobs: Vec<E>,
+pub struct Core {
+    pub database: &'static database::Database,
+    pub map: map::Map,
+    pub player: player::Player,
 }
 
 pub enum CoreInput {
@@ -48,13 +47,12 @@ pub enum CoreOutput {
     Update,
 }
 
-impl<E: entity::Entity> Core<E> {
-    pub fn new(db: database::Database, player: player::Player) -> Self {
+impl Core {
+    pub fn new(db: &'static database::Database, player: player::Player) -> Self {
         Self {
             database: db,
             map: map::Map::new(1,1),
             player: player,
-            mobs: Vec::new(),
         }
     }
     pub fn next(input: Option<CoreInput>) -> CoreOutput {

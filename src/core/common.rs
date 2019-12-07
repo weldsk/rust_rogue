@@ -143,3 +143,25 @@ pub struct Position {
     pub x: u32,
     pub y: u32,
 }
+
+impl Position {
+    pub fn move_to_dir(&self, dir: Direction) -> Position {
+        let mut x = self.x;
+        let mut y = self.y;
+        match dir {
+            Direction::Up           => y -= 1,
+            Direction::Down         => y += 1,
+            Direction::Left         => x -= 1,
+            Direction::Right        => x += 1,
+            Direction::UpperLeft    => { x-= 1; y -= 1 },
+            Direction::UpperRight   => { x+= 1; y -= 1 },
+            Direction::LowerLeft    => { x-= 1; y += 1 },
+            Direction::LowerRight   => { x+= 1; y += 1 },
+        }
+
+        Position {
+            x: x,
+            y: y,
+        }
+    }
+}
