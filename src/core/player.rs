@@ -36,11 +36,19 @@ impl Entity for Player {
     fn is_player(&self) -> bool {
         true
     }
-    fn walk(&self, core: Core, dir: Direction) -> bool {
-        core.map.tile(self.position).terrain().is_able_to_get_out();
-    }
-}
+    fn walk(&mut self, core: &mut Core, dir: Direction) -> bool {
+        let current_terrain = core.map.tile(self.position).terrain_mut();
+        let next_position = self.position.move_to_dir(dir);
+        let next_terrain = core.map.tile(next_position).terrain_mut();
 
+        if (*current_terrain).is_able_to_get_out(
+            &core, &*self,
+            self.position, next_position, dir) {
+            return false;
+        }
+        core.map.tile(self.position).terrain().is_able_to_get_out();
+        return true;
+    }
 impl Default for Player {
     fn default() -> Self {
         Self {
@@ -53,6 +61,7 @@ impl Default for Player {
             weapons: Vec::new(),
             armors: Vec::new(),
             items: Vec::new(),
+            position: Position{x:0, y:0}
         }
     }
 }
