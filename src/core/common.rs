@@ -140,23 +140,24 @@ impl Direction {
 
 #[derive(PartialEq,Copy,Clone)]
 pub struct Position {
-    pub x: u32,
-    pub y: u32,
+    pub x: i32,
+    pub y: i32,
 }
 
 impl Position {
-    pub fn move_to_dir(&self, dir: Direction) -> Position {
+    pub fn move_to_dir(&self, dir: Direction, range: i32) -> Position {
         let mut x = self.x;
         let mut y = self.y;
         match dir {
-            Direction::Up           => y -= 1,
-            Direction::Down         => y += 1,
-            Direction::Left         => x -= 1,
-            Direction::Right        => x += 1,
-            Direction::UpperLeft    => { x-= 1; y -= 1 },
-            Direction::UpperRight   => { x+= 1; y -= 1 },
-            Direction::LowerLeft    => { x-= 1; y += 1 },
-            Direction::LowerRight   => { x+= 1; y += 1 },
+            Direction::Up           => y -= range,
+            Direction::Down         => y += range,
+            Direction::Left         => x -= range,
+            Direction::Right        => x += range,
+            Direction::UpperLeft    => { x-= range; y -= range },
+            Direction::UpperRight   => { x+= range; y -= range },
+            Direction::LowerLeft    => { x-= range; y += range },
+            Direction::LowerRight   => { x+= range; y += range },
+            _ => (),
         }
 
         Position {

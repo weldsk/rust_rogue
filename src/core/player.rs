@@ -36,8 +36,8 @@ impl Entity for Player {
     fn is_player(&self) -> bool {
         true
     }
-    fn walk(&self, core: Core, dir: Direction) -> bool {
-        core.map.tile(self.position).terrain().is_able_to_get_out();
+    fn action(&mut self, core:&mut Core) {
+
     }
 }
 
@@ -50,6 +50,7 @@ impl Default for Player {
             deffence: 0,
             equiped_weapon: None,
             equiped_armor: None,
+            position: Position{x:0, y:0},
             weapons: Vec::new(),
             armors: Vec::new(),
             items: Vec::new(),
