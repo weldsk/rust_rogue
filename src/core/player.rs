@@ -37,10 +37,8 @@ impl Entity for Player {
         true
     }
     fn action(&mut self, core:&mut Core) {
-
     }
 }
-
 impl Default for Player {
     fn default() -> Self {
         Self {
@@ -53,7 +51,7 @@ impl Default for Player {
             position: Position{x:0, y:0},
             weapons: Vec::new(),
             armors: Vec::new(),
-            items: Vec::new(),
+            items: Vec::new()
         }
     }
 }

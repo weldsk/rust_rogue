@@ -23,5 +23,17 @@ impl Entity for Mob {
         false
     }
     fn action(&mut self, core: &mut Core) {
+        /*
+        let current_terrain = core.map.tile(self.position).terrain_mut();
+        let next_position = self.position.move_to_dir(dir);
+        let next_terrain = core.map.tile(next_position).terrain_mut();
+
+        if (*current_terrain).is_able_to_get_out(&core, &*self,
+                                                 self.position, next_position, dir) {
+            return false;
+        } else {
+            return true;
+        }
+        */
     }
 }
